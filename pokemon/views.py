@@ -10,3 +10,11 @@ def index(request):
     }
 
     return render(request, "index.html", context)
+
+def pokemon(request, name):
+    queryset = Pokemon.objects.get(name=name)
+    context = {
+        "obj": queryset
+    }
+
+    return render(request, "pokemon.html", context)

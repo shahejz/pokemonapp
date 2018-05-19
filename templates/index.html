@@ -13,7 +13,7 @@
     <tbody>
         {% for obj in object_list %}
             <tr>
-                <td>{{ obj.name }}</td>
+                <td> <a href="/pokemon/{{ obj.name }}">{{ obj.name }}</a></td>
                 {% if obj.type2 == "False" %}
                     <td colspan="2">{{ obj.type1 }}</td>
                 {% else %}
