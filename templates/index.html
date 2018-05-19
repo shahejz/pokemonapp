@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table", style="text-align:center">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col" colspan="2">Type</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.name }}</td>
+                {% if obj.type2 == "False" %}
+                    <td colspan="2">{{ obj.type1 }}</td>
+                {% else %}
+                    <td>{{ obj.type1 }}</td>
+                    <td>{{ obj.type2 }}</td>
+                {% endif %}
+            </tr>          
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

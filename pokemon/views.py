@@ -1,14 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from .models import Pokemon
+
 def index(request):
-    # return HttpResponse("Hello, world. You're at the polls index.")
-    return render(request, 'base.html', {'html_var': 'index'})
+    queryset = Pokemon.objects.all()
+    context = {
+        "object_list": queryset
+    }
 
-def index1(request):
-    # return HttpResponse("Hello, world. You're at the polls index.")
-    return render(request, 'base.html', {'html_var': 'index1'})
-
-def index2(request):
-    # return HttpResponse("Hello, world. You're at the polls index.")
-    return render(request, 'base.html', {'html_var': 'index2'})
+    return render(request, "index.html", context)

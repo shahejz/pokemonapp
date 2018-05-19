@@ -16,11 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from pokemon.views import index, index1, index2
+from pokemon.views import index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
-    url(r'^index1/$', index1),
-    url(r'^index2/$', index2),
+    url(r'^index/$', index),
 ]
