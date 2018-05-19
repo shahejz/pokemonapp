@@ -12,11 +12,11 @@ def index(request):
 
     return render(request, "index.html", context)
 
-def pokemon(request, name=None, id=None):
+def pokemon(request, name=None, number=None):
     if name:
         queryset = Pokemon.objects.get(name=name)
     else:
-        queryset = Pokemon.objects.get(id=int(id))
+        queryset = Pokemon.objects.get(number=int(number))
 
     context = {
         "obj": queryset

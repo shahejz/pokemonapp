@@ -1,17 +1,43 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+<script src="{% static "js/Chart.min.js" %}"></script>
+{% endblock header %}
 
 {% block content %}
 
 <h3>{{ obj.name }}</h3>
 
-<p>{{ obj.type1 }}</p>
-<p>{{ obj.type2 }}</p>
-<p>{{ obj.hp }}</p>
-<p>{{ obj.attack }}</p>
-<p>{{ obj.defense }}</p>
-<p>{{ obj.sp_attack }}</p>
-<p>{{ obj.sp_defense }}</p>
-<p>{{ obj.speed }}</p>
-<p>{{ obj.gen }}</p>
+<div>
+    <div style="height: 300px; width: 50%; float:right">
+        <canvas id="myCanvas"></canvas>
+    </div>
+    <div style="float:left">
+        <img src="{% static "images/global-link/" %}{{ obj.number }}.png" alt="">
+    </div>
+</div>
+
+<script>
+var ctx = document.getElementById('myCanvas').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'horizontalBar',
+
+    data: {
+        labels: ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"],
+        datasets: [{
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{ obj.hp }}, {{ obj.attack }}, {{ obj.defense }}, {{ obj.sp_attack }}, {{ obj.sp_defense }}, {{ obj.speed }}],
+        }]
+    },
+
+    options: {
+        legend: { display: false },
+        maintainAspectRatio: false,
+    }
+});
+
+</script>
 
 {% endblock content %}

@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
 <table class="table", style="text-align:center">
     <thead>
         <tr>
-            <th scope="col">ID</th>
+            <th scope="col"></th>
+            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col" colspan="2">Type</th>
         </tr>
@@ -14,8 +16,9 @@
     <tbody>
         {% for obj in object_list %}
             <tr>
+                <td><img src="{% static "images/icons/" %}{{ obj.number }}.png" alt=""></td>
                 <td>{{ obj.id }}</td>
-                <td> <a href="/pokemon/{{ obj.id }}">{{ obj.name }}</a></td>
+                <td> <a href="/pokemon/{{ obj.number }}">{{ obj.name }}</a></td>
                 {% if obj.type2 == "False" %}
                     <td colspan="2">{{ obj.type1 }}</td>
                 {% else %}
