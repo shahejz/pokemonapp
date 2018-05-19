@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from pokemon.views import index, pokemon
+from pokemon.views import index, pokemon, gen
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^index/$', index),
+    url(r'^gen/$', gen),
+    url(r'^gen/(?P<gen>\d+)$', gen),
     url(r'^pokemon/(?P<name>\w+)/$', pokemon),
 ]

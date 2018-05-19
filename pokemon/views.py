@@ -18,3 +18,11 @@ def pokemon(request, name):
     }
 
     return render(request, "pokemon.html", context)
+
+def gen(request, gen=1):
+    queryset = Pokemon.objects.filter(gen=gen)
+    context = {
+        "object_list": queryset
+    }
+
+    return render(request, "index.html", context)
