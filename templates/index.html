@@ -17,17 +17,39 @@
         {% for obj in object_list %}
             <tr>
                 <td><img src="{% static "images/icons/" %}{{ obj.number }}.png" alt=""></td>
-                <td>{{ obj.id }}</td>
+                <td>{{ obj.number }}</td>
                 <td> <a href="/pokemon/{{ obj.number }}">{{ obj.name }}</a></td>
                 {% if obj.type2 == "False" %}
                     <td colspan="2">{{ obj.type1 }}</td>
                 {% else %}
-                    <td>{{ obj.type1 }}</td>
-                    <td>{{ obj.type2 }}</td>
+                    <td colspan="1">{{ obj.type1 }}</td>
+                    <td colspan="1">{{ obj.type2 }}</td>
                 {% endif %}
             </tr>          
         {% endfor %}
     </tbody>
 </table>
+
+{% if object_list.has_other_pages %}
+  <ul class="pagination">
+    {% if object_list.has_previous %}
+      <li><a href="?page={{ object_list.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in object_list.paginator.page_range %}
+      {% if object_list.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if object_list.has_next %}
+      <li><a href="?page={{ object_list.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 
 {% endblock content %}

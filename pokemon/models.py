@@ -12,6 +12,7 @@ class Pokemon(models.Model):
     sp_attack   = models.IntegerField(blank=True, default=False)
     sp_defense  = models.IntegerField(blank=True, default=False)
     speed       = models.IntegerField(blank=True, default=False)
+    total       = models.IntegerField(blank=True, default=False)
     gen         = models.IntegerField(blank=True, default=False)
 
     def __repr__(self):
