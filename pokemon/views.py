@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.db.models import Q
 
 from .models import Pokemon
 
@@ -21,6 +22,14 @@ def pokemon(request, name):
 
 def gen(request, gen=1):
     queryset = Pokemon.objects.filter(gen=gen)
+    context = {
+        "object_list": queryset
+    }
+
+    return render(request, "index.html", context)
+
+def type(request, type):
+    queryset = Pokemon.objects.filter(Q(type1=type) | Q(type2=type))
     context = {
         "object_list": queryset
     }
