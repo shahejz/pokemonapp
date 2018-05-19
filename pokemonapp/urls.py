@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^gen/$', gen),
     url(r'^gen/(?P<gen>\d+)$', gen),
     url(r'^pokemon/(?P<name>\w+)/$', pokemon),
+    url(r'^type/$', type),
     url(r'^type/(?P<type>\w+)/$', type),
 ]

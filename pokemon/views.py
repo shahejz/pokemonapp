@@ -28,7 +28,15 @@ def gen(request, gen=1):
 
     return render(request, "index.html", context)
 
-def type(request, type):
+def type(request, type=None):
+    if type == None:
+        queryset = Pokemon.objects.order_by("type1").values("type1").distinct()
+        context = {
+            "types": queryset
+        }
+
+        return render(request, "types.html", context)
+
     queryset = Pokemon.objects.filter(Q(type1=type) | Q(type2=type))
     context = {
         "object_list": queryset
