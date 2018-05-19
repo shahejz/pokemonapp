@@ -5,6 +5,7 @@
 <table class="table", style="text-align:center">
     <thead>
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col" colspan="2">Type</th>
         </tr>
@@ -13,7 +14,8 @@
     <tbody>
         {% for obj in object_list %}
             <tr>
-                <td> <a href="/pokemon/{{ obj.name }}">{{ obj.name }}</a></td>
+                <td>{{ obj.id }}</td>
+                <td> <a href="/pokemon/{{ obj.id }}">{{ obj.name }}</a></td>
                 {% if obj.type2 == "False" %}
                     <td colspan="2">{{ obj.type1 }}</td>
                 {% else %}

@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Pokemon(models.Model):
+    id          = models.IntegerField(primary_key=True, blank=True, default=False)
     name        = models.CharField(max_length=120)
     type1       = models.CharField(max_length=120, blank=True, default=False)
     type2       = models.CharField(max_length=120, blank=True, default=False)
